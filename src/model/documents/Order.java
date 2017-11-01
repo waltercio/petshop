@@ -1,4 +1,4 @@
-package documents;
+package model.documents;
 
 import java.util.Date;
 

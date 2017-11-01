@@ -8,10 +8,12 @@ public class Employee extends Person {
 
 	}
 
+	//get type attribute from Employee class
 	public String getType() {
 		return type;
 	}
-
+	
+	//set type attribute from Employee class
 	public void setType(String type) {
 		this.type = type;
 	}
