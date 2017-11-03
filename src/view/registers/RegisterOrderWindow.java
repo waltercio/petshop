@@ -13,10 +13,12 @@ import java.util.Date;
 import java.util.Calendar;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import controller.MySQLDatabase;
 
 
 public class RegisterOrderWindow {
 
+	MySQLDatabase databaseAction = new MySQLDatabase();
 	private JFrame frame;
 
 	/**
@@ -48,7 +50,7 @@ public class RegisterOrderWindow {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -56,6 +58,17 @@ public class RegisterOrderWindow {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 				LocalDateTime now = LocalDateTime.now();
 				System.out.println(dtf.format(now));
+				databaseAction.startDB();
+				databaseAction.insertOnOrderTable("2", "2", "2", "2", dtf.format(now), null);
+				databaseAction.closeDB();
+			}
+		});
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//frame.
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -64,16 +77,23 @@ public class RegisterOrderWindow {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(22)
 					.addComponent(btnNewButton)
-					.addContainerGap(323, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(btnNewButton_1)
+					.addContainerGap(216, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap(150, Short.MAX_VALUE)
-					.addComponent(btnNewButton)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton)
+						.addComponent(btnNewButton_1))
 					.addGap(89))
 		);
 		frame.getContentPane().setLayout(groupLayout);
+	}
+	public void setVisible() {
+		frame.setVisible(true);
 	}
 
 }

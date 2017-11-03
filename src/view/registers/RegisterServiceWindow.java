@@ -9,12 +9,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import controller.MySQLDatabase;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class RegisterEmployeeWindow {
+public class RegisterServiceWindow {
 
-	private JFrame frame;
 	MySQLDatabase databaseAction = new MySQLDatabase();
+	private JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -23,7 +22,7 @@ public class RegisterEmployeeWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterEmployeeWindow window = new RegisterEmployeeWindow();
+					RegisterServiceWindow window = new RegisterServiceWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +34,7 @@ public class RegisterEmployeeWindow {
 	/**
 	 * Create the application.
 	 */
-	public RegisterEmployeeWindow() {
+	public RegisterServiceWindow() {
 		initialize();
 	}
 
@@ -49,40 +48,26 @@ public class RegisterEmployeeWindow {
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				databaseAction.startDB();
-				databaseAction.insertOnEmployeeTable("Pedro", "444", "Address1", "veterinary", "Male", "133");			
-			}
-		});
-		
-		JButton btnNewButton_1 = new JButton("Abrir Order screen");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RegisterOrderWindow orderWindow = new RegisterOrderWindow();
-				orderWindow.setVisible();
-				
+				databaseAction.insertOnServiceTable("Partial Shear", "20.00");
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(61)
+					.addGap(26)
 					.addComponent(btnNewButton)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1)
-					.addContainerGap(189, Short.MAX_VALUE))
+					.addContainerGap(319, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(190, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_1))
-					.addGap(49))
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(161, Short.MAX_VALUE)
+					.addComponent(btnNewButton)
+					.addGap(78))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
-
 }

@@ -65,7 +65,8 @@ public class MySQLDatabase {
 		return returnCode;
 	}
 	
-	public int insertOnUserTable(String nome, String cpf, String address, String type, String gender, String phone) {
+	//Execute query insert on table employee
+	public int insertOnEmployeeTable(String nome, String cpf, String address, String type, String gender, String phone) {
 		
 		int returnCode;
 		PreparedStatement stmt;
@@ -84,6 +85,7 @@ public class MySQLDatabase {
 		return returnCode;
 	}
 	
+	//Execute query insert on table pet
 	public int insertOnPetTable(String clientID, String name, String type,  String breed, String collor, String gender) {
 		
 		int returnCode;
@@ -103,6 +105,7 @@ public class MySQLDatabase {
 		return returnCode;
 	}
 	
+	//Execute query insert on table user
 	public int insertOnUserTable(String name, String username,  String password) {
 		
 		int returnCode;
@@ -121,6 +124,45 @@ public class MySQLDatabase {
 				
 		return returnCode;
 	}	
+	
+	//Execute query insert on service user
+	public int insertOnOrderTable(String serviceID, String employeeID,  String petID, String client_ID, String entryDateTime, String deliveryDateTime) {
+		
+		int returnCode;
+		PreparedStatement stmt;
+		String query = "insert into service values(null" + ",'" + serviceID + "','" + employeeID + "','" + petID +  "','" + client_ID + "','" + entryDateTime + "','" + deliveryDateTime + "')";
+		System.out.println(query);
+		try {
+			stmt = conn.prepareStatement(query);
+			stmt.execute();
+			returnCode = 016; //Return code = Insert successfully
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			returnCode = 017; //Return code = Insert failed
+		}
+				
+		return returnCode;
+	}		
+	
+	public int insertOnServiceTable(String serviceDescription, String servicePrice) {
+		
+		int returnCode;
+		PreparedStatement stmt;
+		String query = "insert into service values(null" + ",'" + serviceDescription + "','" + servicePrice + "')";
+		System.out.println(query);
+		try {
+			stmt = conn.prepareStatement(query);
+			stmt.execute();
+			returnCode = 016; //Return code = Insert successfully
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			returnCode = 017; //Return code = Insert failed
+		}
+				
+		return returnCode;
+	}		
 	
 	public int closeDB() {
 		int returnCode;
