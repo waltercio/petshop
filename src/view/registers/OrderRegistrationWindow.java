@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import controller.MySQLDatabase;
 
 
-public class RegisterOrderWindow {
+public class OrderRegistrationWindow {
 
 	MySQLDatabase databaseAction = new MySQLDatabase();
 	private JFrame frame;
@@ -28,7 +28,7 @@ public class RegisterOrderWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterOrderWindow window = new RegisterOrderWindow();
+					OrderRegistrationWindow window = new OrderRegistrationWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class RegisterOrderWindow {
 	/**
 	 * Create the application.
 	 */
-	public RegisterOrderWindow() {
+	public OrderRegistrationWindow() {
 		initialize();
 	}
 
@@ -59,7 +59,7 @@ public class RegisterOrderWindow {
 				LocalDateTime now = LocalDateTime.now();
 				System.out.println(dtf.format(now));
 				databaseAction.startDB();
-				databaseAction.insertOnOrderTable("2", "2", "2", "2", dtf.format(now), null);
+				databaseAction.insertOnOrderTable("1", "1", "2", "1", dtf.format(now),"");
 				databaseAction.closeDB();
 			}
 		});

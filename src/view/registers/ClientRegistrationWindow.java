@@ -9,11 +9,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import controller.MySQLDatabase;
+import java.awt.Toolkit;
 
-public class RegisterServiceWindow {
-
-	MySQLDatabase databaseAction = new MySQLDatabase();
-	private JFrame frame;
+public class ClientRegistrationWindow {
+	MySQLDatabase databaseActions = new MySQLDatabase();
+	private JFrame frmPetshopGoodPet;
 
 	/**
 	 * Launch the application.
@@ -22,8 +22,8 @@ public class RegisterServiceWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterServiceWindow window = new RegisterServiceWindow();
-					window.frame.setVisible(true);
+					ClientRegistrationWindow window = new ClientRegistrationWindow();
+					window.frmPetshopGoodPet.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -34,7 +34,7 @@ public class RegisterServiceWindow {
 	/**
 	 * Create the application.
 	 */
-	public RegisterServiceWindow() {
+	public ClientRegistrationWindow() {
 		initialize();
 	}
 
@@ -42,32 +42,35 @@ public class RegisterServiceWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPetshopGoodPet = new JFrame();
+		frmPetshopGoodPet.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\EstudoJava\\petshop\\img\\icon_pet.png"));
+		frmPetshopGoodPet.setTitle("Petshop Lovely Pet");
+		frmPetshopGoodPet.setBounds(100, 100, 450, 300);
+		frmPetshopGoodPet.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				databaseAction.startDB();
-				databaseAction.insertOnServiceTable("Partial Shear", "20.00");
+			public void actionPerformed(ActionEvent arg0) {				
+				databaseActions.startDB();
+				databaseActions.insertOnClientTable("Vanderson", "111", "Male", "Av. Tutoia, 1157", "222");
+				databaseActions.closeDB();				
 			}
 		});
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frmPetshopGoodPet.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(26)
+					.addGap(143)
 					.addComponent(btnNewButton)
-					.addContainerGap(319, Short.MAX_VALUE))
+					.addContainerGap(202, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(161, Short.MAX_VALUE)
+					.addContainerGap(195, Short.MAX_VALUE)
 					.addComponent(btnNewButton)
-					.addGap(78))
+					.addGap(44))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		frmPetshopGoodPet.getContentPane().setLayout(groupLayout);
 	}
 }

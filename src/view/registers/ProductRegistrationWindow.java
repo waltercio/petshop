@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import controller.MySQLDatabase;
 
-public class RegisterPetWindow {
+public class ProductRegistrationWindow {
 
-	MySQLDatabase databaseAction = new MySQLDatabase();
+	MySQLDatabase databaseActions = new MySQLDatabase();
 	private JFrame frame;
 
 	/**
@@ -22,7 +22,7 @@ public class RegisterPetWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterPetWindow window = new RegisterPetWindow();
+					ProductRegistrationWindow window = new ProductRegistrationWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class RegisterPetWindow {
 	/**
 	 * Create the application.
 	 */
-	public RegisterPetWindow() {
+	public ProductRegistrationWindow() {
 		initialize();
 	}
 
@@ -48,28 +48,28 @@ public class RegisterPetWindow {
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
-				databaseAction.startDB();
-				databaseAction.insertOnPetTable("2", "rock", "dog", "Afghan Hound", "Black and White", "Female");
-				databaseAction.closeDB();				
+			public void actionPerformed(ActionEvent arg0) {
+				databaseActions.startDB();
+				databaseActions.insertOnProductsTable("P001", "dog leash", 20.00, 1);
+				databaseActions.closeDB();
+				
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(83)
+					.addGap(72)
 					.addComponent(btnNewButton)
-					.addContainerGap(262, Short.MAX_VALUE))
+					.addContainerGap(273, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(165, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(120)
 					.addComponent(btnNewButton)
-					.addGap(74))
+					.addContainerGap(119, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
-
 }

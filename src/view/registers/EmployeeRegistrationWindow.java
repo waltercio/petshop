@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import controller.MySQLDatabase;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class RegisterEmployeeWindow {
+public class EmployeeRegistrationWindow {
 
 	private JFrame frame;
 	MySQLDatabase databaseAction = new MySQLDatabase();
@@ -23,7 +23,7 @@ public class RegisterEmployeeWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterEmployeeWindow window = new RegisterEmployeeWindow();
+					EmployeeRegistrationWindow window = new EmployeeRegistrationWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class RegisterEmployeeWindow {
 	/**
 	 * Create the application.
 	 */
-	public RegisterEmployeeWindow() {
+	public EmployeeRegistrationWindow() {
 		initialize();
 	}
 
@@ -58,7 +58,7 @@ public class RegisterEmployeeWindow {
 		JButton btnNewButton_1 = new JButton("Abrir Order screen");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegisterOrderWindow orderWindow = new RegisterOrderWindow();
+				OrderRegistrationWindow orderWindow = new OrderRegistrationWindow();
 				orderWindow.setVisible();
 				
 			}
